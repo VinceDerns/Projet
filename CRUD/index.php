@@ -10,8 +10,9 @@ require 'bd_conn.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ea6733594a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
     <title>ToDoList</title>
@@ -41,28 +42,40 @@ require 'bd_conn.php';
             </div>
         </div>
         <?php
-        $todo = $conn->query('SELECT * FROM todo ORDER BY id DESC');
+
         ?>
         <div class="show-todo-section">
             <?php
-            if ($todo->rowCount() > 0) { ?>
+            $todo = $conn->query('SELECT * FROM todo ORDER BY id DESC');
+
+            if ($todo->rowCount() <= 0) { ?>
                 <div class="tache">
                     <div class="vide">
                         <button class="btn_vide">
-                            <img src="./../images/tete_romain.jpg" alt="">
-                        <i class="fa-regular fa-square-plus" style="color: #000000;"></i>
+                            <i class="fa-regular fa-square-plus" style="color: #000000;"></i>
                         </button>
                     </div>
                 </div>
             <?php } ?>
 
-            <div class="tache">
-                <input type="checkbox">
-                <h2>Tâche à faire</h2>
-                <br>
-                <small>créer le : 30/03/2023</small>
-            </div>
-        
+            <?php while($add_todo = $todo -> fetch(PDO :: FETCH_ASSOC)) { ?>
+                <div class="tache">
+                    <span id="<?php echo $add_todo['id'];?>"
+                    class="supprimer_todo">x</span>
+                    <?php if ($add_todo['valider']){?>
+                    <input type="checkbox"
+                           class="checkbox" 
+                           checked>
+                    <h2 class="valider"><?php echo $add_todo['titre'] ?></h2>
+                    <?php } else { ?>
+                        <input type="checkbox" 
+                               class="checkbox">
+                    <h2><?php echo $add_todo['titre'] ?></h2>
+                    <?php } ?>
+                    <br>
+                    <small>créer le : <?php echo $add_todo['date_crea'] ?></small>
+                </div>
+            <?php } ?>
         </div>
 
 
