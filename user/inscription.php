@@ -24,9 +24,9 @@ if (
         'mdp' => password_hash($mdp, PASSWORD_ARGON2I),        
     ]);
     if ($res) {
-        $_SESSION['creationCompte'] = 'Le compte a été succès';
+        $_SESSION['creationCompte'] = 'Le compte a été créer avec succès';
     } else {
-        $_SESSION['creationCompte'] = 'Une erreur est survenue lors de la création du compte, veuillez ré essayer dans quelques instant et contacter l\'administrateur du site si le problèmeme persiste';
+        $_SESSION['creationCompte'] = 'Une erreur est survenue lors de la création du compte, veuillez ré-essayer dans quelques instant et contacter l\'administrateur du site si le problèmeme persiste';
     }
 } else {
     
