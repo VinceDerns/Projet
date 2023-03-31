@@ -36,9 +36,11 @@ require './bd_conn.php';
         <div class="main-section">
             <div class="tapertache">
                 <form action="../app/ajouter.php" method="POST" autocomplete="off">
-                    <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error') { ?>                         
+                    <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error') { ?>
+                        <input class="barretache" type="text" name="title" placeholder="Veuillez saisir une tâche." style="border-color: red">
+                    <button class="bouton" type="submit">Ajouter &nbsp; <span>&#43;</span></button>    
                         <?php } else{?>
-                    <input class="barretache" type="text" name="title" placeholder="Saisir une tâche">
+                    <input class="barretache" type="text" name="title" placeholder="Saisir une tâche !">
                     <button class="bouton" type="submit">Ajouter &nbsp; <span>&#43;</span></button>
                     <?php } ?>
                 </form>
