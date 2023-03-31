@@ -26,7 +26,7 @@ require 'bd_conn.php';
                 <h1 class="titre">ToDoList</h1>
             </div>
             <div class="navdroite">
-                <a href="./connx.html" class="connx">Connexion</a>
+                <a href="./../user/form-inscription.php" class="connx">Connexion</a>
                 <a href="./inscrip.html">Inscription</a>
             </div>
         </nav>
