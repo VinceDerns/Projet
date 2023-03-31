@@ -1,5 +1,5 @@
 <?php
-require 'bd_conn.php';
+require './bd_conn.php';
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +26,8 @@ require 'bd_conn.php';
                 <h1 class="titre">ToDoList</h1>
             </div>
             <div class="navdroite">
-                <a href="./../user/form-inscription.php" class="connx">Connexion</a>
-                <a href="./inscrip.html">Inscription</a>
+                <a href="./../user/login.php" class="connx">Connexion</a>
+                <a href="./../user/form-inscription.php">Inscription</a>
             </div>
         </nav>
     </header>
@@ -35,9 +35,12 @@ require 'bd_conn.php';
     <main>
         <div class="main-section">
             <div class="tapertache">
-                <form action="">
+                <form action="../app/ajouter.php" method="POST" autocomplete="off">
+                    <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error') { ?>                         
+                        <?php } else{?>
                     <input class="barretache" type="text" name="title" placeholder="Saisir une tâche">
                     <button class="bouton" type="submit">Ajouter &nbsp; <span>&#43;</span></button>
+                    <?php } ?>
                 </form>
             </div>
         </div>
