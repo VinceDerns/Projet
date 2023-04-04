@@ -103,10 +103,13 @@ img {
 }
 
 .tache {
-    /* height: 540px; */
     height: 20vh;
     width: 100%;
     text-align: center;
+    background-color: #6C7360;
+    
+    
+    
 }
 
 footer {
