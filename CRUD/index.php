@@ -65,8 +65,9 @@ require './bd_conn.php';
 
             <?php while($add_todo = $todo -> fetch(PDO :: FETCH_ASSOC)) { ?>
                 <div class="tache">
-                    <span id="<?php echo $add_todo['id'];?>"
-                    class="supprimer_todo">X</span>
+                    <button id="<?php echo $add_todo['id'];?>"
+                    class="supprimer_todo">X</button>
+                    <button class="modif" id="modif">Modifier</button>
                     <?php if ($add_todo['valider']){?>
                     <input type="checkbox"
                            class="checkbox" 
@@ -81,6 +82,8 @@ require './bd_conn.php';
                     <small>créer le : <?php echo $add_todo['date_crea'] ?></small>
                 </div>
             <?php } ?>
+
+            
         </div>
 
 
