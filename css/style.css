@@ -103,13 +103,16 @@ img {
 }
 
 .tache {
-    height: 20vh;
+    height: 15vh;
     width: 100%;
     text-align: center;
     background-color: #6C7360;
-    
-    
-    
+    margin-bottom: 10px;  
+    padding-top: 2em;  
+}
+
+.supprimer_todo {
+    background-color: blue;
 }
 
 footer {
