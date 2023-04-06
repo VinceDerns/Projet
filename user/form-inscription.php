@@ -34,6 +34,7 @@ session_start();
 			<div>
 				<label for="nom">Nom</label>
 				<input type="text" name="nom" id="nom" placeholder="nom" />
+				<img src="captcha.php" alt="">
 			</div>
 			<div>
 				<label for="prenom">Prénom</label>

@@ -13,8 +13,8 @@ require './bd_conn.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/ea6733594a.js" crossorigin="anonymous"></script>       
-    <link rel="stylesheet" href="/../Projet/css/style.css">    
+    <script src="https://kit.fontawesome.com/ea6733594a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/../Projet//css/style.css">
     <title>ToDoList</title>
 </head>
 
@@ -36,12 +36,12 @@ require './bd_conn.php';
         <div class="main-section">
             <div class="tapertache">
                 <form action="../app/ajouter.php" method="POST" autocomplete="off">
-                    <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error') { ?>
+                    <?php if (isset($_GET['mess']) && $_GET['mess'] == 'error') { ?>
                         <input class="barretache" type="text" name="title" placeholder="Veuillez saisir une tâche." style="border-color: red">
-                    <button class="bouton" type="submit">Ajouter &nbsp; <span>&#43;</span></button>    
-                        <?php } else{?>
-                    <input class="barretache" type="text" name="title" placeholder="Saisir une tâche !">
-                    <button class="bouton" type="submit">Ajouter &nbsp; <span>&#43;</span></button>
+                        <button class="bouton" type="submit">Ajouter &nbsp; <span>&#43;</span></button>
+                    <?php } else { ?>
+                        <input class="barretache" type="text" name="title" placeholder="Saisir une tâche !">
+                        <button class="bouton" type="submit">Ajouter &nbsp; <span>&#43;</span></button>
                     <?php } ?>
                 </form>
             </div>
@@ -63,37 +63,72 @@ require './bd_conn.php';
                 </div>
             <?php } ?>
 
-            <?php while($add_todo = $todo -> fetch(PDO :: FETCH_ASSOC)) { ?>
+            <?php while ($add_todo = $todo->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="tache">
-                    <button id="<?php echo $add_todo['id'];?>"
+                    <button id="<?php echo $add_todo['id']; ?>" 
                     class="supprimer_todo">X</button>
                     <button class="modif" id="modif">Modifier</button>
-                    <?php if ($add_todo['valider']){?>
-                    <input type="checkbox"
-                           class="checkbox" 
-                           checked>
-                    <h2 class="valider"><?php echo $add_todo['titre'] ?></h2>
+                    <?php if ($add_todo['valider']) { ?>
+                        <input type="checkbox" 
+                        data-todo-id="<?php echo $add_todo['id']; ?>" 
+                        class="checkbox" 
+                        checked>
+                        <h2 class="valider"><?php echo $add_todo['titre'] ?></h2>
                     <?php } else { ?>
                         <input type="checkbox" 
-                               class="checkbox">
-                    <h2><?php echo $add_todo['titre'] ?></h2>
+                        data-todo-id="<?php echo $add_todo['id']; ?>" 
+                        class="checkbox">
+                        <h2><?php echo $add_todo['titre'] ?></h2>
                     <?php } ?>
                     <br>
                     <small>créer le : <?php echo $add_todo['date_crea'] ?></small>
                 </div>
             <?php } ?>
-
-            
         </div>
-
-
     </main>
-
-
     <footer>
         <p class="retv">R&V Entertainment all right reserved</p>
         <a href="" class="dark">Mode sombre</a>
-    </footer>   
+    </footer>
+    <script src="../js/jquery.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            $('.supprimer_todo').click(function() {
+                const id = $(this).attr('id');
+
+                $.post("../app/supp.php", {
+                    id: id
+                }, (data) => {
+                    if (data) {
+                        $(this).parent().hide(800);
+                    }
+                });
+            });
+
+           $(".checkbox").click(function(e){
+            const id = $(this).attr('data-todo-id');
+
+            $.post('../app/valider.php', {
+                id: id
+
+            },             
+            (data) => {
+                if (data != 'erreur') {
+                    const h2 = $(this).next();
+                    if(data === '1') {
+                        h2.removeClass('valider');
+                    } else {
+                        h2.addClass('valider');
+                    }
+                }
+            })
+
+                   
+        
+           });
+        });
+    </script>
 </body>
+
 </html>
