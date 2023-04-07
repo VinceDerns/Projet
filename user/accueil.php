@@ -18,9 +18,17 @@ echo '<pre>'. print_r($_SESSION,true).'</pre>';
 </head>
 
 <body>
-    <header>
-        <h1>To Do List</h1>
-        <h2>Accueil</h2>
+<header>
+        <nav>
+            <div class="navgauche">
+                <a href="./index.html"><img src="../images/place.jpg" alt=""></a>
+                <h1 class="titre">ToDoList</h1>
+            </div>
+            <div class="navdroite">
+                <a href="./../user/login.php" class="connx">Connexion</a>
+                <a href="./../user/form-inscription.php">Inscription</a>
+            </div>
+        </nav>
     </header>
     <main>
         <?php

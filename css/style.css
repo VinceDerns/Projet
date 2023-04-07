@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    padding: 0;
     font-family: 'Quicksand', sans-serif;        
 }
 
@@ -153,4 +154,27 @@ footer {
 .supprimer_todo 
 {
 background-color: #9B836B;
+}
+
+/* .dark{
+    background-color: #24292e;
+    color: aliceblue;
+} */
+
+@media screen and (max-width: 1080px) {
+    .banniere{
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .icone{
+        width: 24px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .icone{
+        width: 1.3em;
+    }
 }

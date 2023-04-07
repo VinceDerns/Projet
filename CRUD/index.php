@@ -14,6 +14,7 @@ require './bd_conn.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ea6733594a.js" crossorigin="anonymous"></script>
+    <script src="../js/script.js" defer></script>
     <link rel="stylesheet" href="/../Projet//css/style.css">
     <title>ToDoList</title>
 </head>
@@ -66,8 +67,7 @@ require './bd_conn.php';
             <?php while ($add_todo = $todo->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="tache">
                     <button id="<?php echo $add_todo['id']; ?>" 
-                    class="supprimer_todo">X</button>
-                    <button class="modif" id="modif">Modifier</button>
+                    class="supprimer_todo">X</button>                    
                     <?php if ($add_todo['valider']) { ?>
                         <input type="checkbox" 
                         data-todo-id="<?php echo $add_todo['id']; ?>" 
@@ -88,7 +88,7 @@ require './bd_conn.php';
     </main>
     <footer>
         <p class="retv">R&V Entertainment all right reserved</p>
-        <a href="" class="dark">Mode sombre</a>
+        <a href="" class="dark" id="dark">Mode sombre</a>
     </footer>
     <script src="../js/jquery.js"></script>
 
